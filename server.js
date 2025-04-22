@@ -9,6 +9,7 @@ dotenv.config({ path: './config.env'})
 const app = express();
 
 app.use(cors());
+app.use(express.json())
 
 // Dev logging
 if(process.env.NODE_ENV === 'development') {
@@ -16,9 +17,10 @@ if(process.env.NODE_ENV === 'development') {
 }
 
 //Profile routes
-app.use('/api/v1/profile', require('./routes/profile'))
-app.use('/api/v1/history', require('./routes/history')) // return history that match from 2 players
-app.use('/api/v1/matchDetail', require('./routes/matchDetail'))
+app.use('/api/v1/profile', require('./routes/profile'));
+app.use('/api/v1/history', require('./routes/history'));
+app.use('/api/v1/matchDetail', require('./routes/matchDetail'));
+app.use('/api/v1/rating', require('./routes/rating'))
 
 const port = process.env.PORT || 8000
 
